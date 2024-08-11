@@ -1,8 +1,14 @@
+import 'package:blog_app_flutter/shared/secrets/app_secrets.dart';
 import 'package:blog_app_flutter/shared/theme.dart';
-import 'package:blog_app_flutter/features/auth/presentation/pages/signUp_page.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+import 'features/auth/presentation/pages/sign_in_Page.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final supabase = await Supabase.initialize(
+      url: AppSecrets.supabaseUrl, anonKey: AppSecrets.supabaseKey);
   runApp(const MyApp());
 }
 
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppTheme.darkThemeMode,
-      home: const SignUpPage(),
+      home: const SignInPage(),
     );
   }
 }
