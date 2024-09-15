@@ -1,6 +1,5 @@
 import 'package:blog_app_flutter/features/auth/presentation/pages/signUp_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../../../shared/colors.dart';
 import '../widgets/auth_gradient_button.dart';

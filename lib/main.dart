@@ -6,7 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'features/auth/presentation/pages/sign_in_Page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); 
   final supabase = await Supabase.initialize(
       url: AppSecrets.supabaseUrl, anonKey: AppSecrets.supabaseKey);
   runApp(const MyApp());

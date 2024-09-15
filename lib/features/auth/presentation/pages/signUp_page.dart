@@ -3,7 +3,6 @@ import 'package:blog_app_flutter/features/auth/presentation/widgets/auth_gradien
 import 'package:blog_app_flutter/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:blog_app_flutter/shared/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SignUpPage extends StatefulWidget {
   static route() => MaterialPageRoute(builder: (context) => const SignUpPage());
@@ -36,49 +35,51 @@ class _SignUpPageState extends State<SignUpPage> {
         padding: const EdgeInsets.all(15.0),
         child: Form(
           key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Sign Up.',
-                style: TextStyle(
-                  fontSize: 50,
-                  color: ColorPallet.Primary3,
-                  fontWeight: FontWeight.w500,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Sign Up.',
+                  style: TextStyle(
+                    fontSize: 50,
+                    color: ColorPallet.Primary3,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 50),
-              AuthFormField(hintText: "name", controller: nameController),
-              const SizedBox(height: 20),
-              AuthFormField(hintText: "Email", controller: emailController),
-              const SizedBox(height: 20),
-              AuthFormField(
-                  hintText: "Password",
-                  controller: passwordController,
-                  isObscureText: true),
-              const SizedBox(height: 30),
-              const AuthGradientButton(text: 'Sign Up.'),
-              const SizedBox(height: 30),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context, SignInPage.route());
-                },
-                child: RichText(
-                    text: TextSpan(
-                        text: "Already have an account ? ",
-                        style: Theme.of(context).textTheme.titleMedium,
-                        children: [
-                      TextSpan(
-                          text: 'Sign In.',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(
-                                  color: ColorPallet.Primary1,
-                                  fontWeight: FontWeight.bold))
-                    ])),
-              )
-            ],
+                const SizedBox(height: 50),
+                AuthFormField(hintText: "name", controller: nameController),
+                const SizedBox(height: 20),
+                AuthFormField(hintText: "Email", controller: emailController),
+                const SizedBox(height: 20),
+                AuthFormField(
+                    hintText: "Password",
+                    controller: passwordController,
+                    isObscureText: true),
+                const SizedBox(height: 30),
+                const AuthGradientButton(text: 'Sign Up.'),
+                const SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, SignInPage.route());
+                  },
+                  child: RichText(
+                      text: TextSpan(
+                          text: "Already have an account ? ",
+                          style: Theme.of(context).textTheme.titleMedium,
+                          children: [
+                        TextSpan(
+                            text: 'Sign In.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                    color: ColorPallet.Primary1,
+                                    fontWeight: FontWeight.bold))
+                      ])),
+                )
+              ],
+            ),
           ),
         ),
       ),
