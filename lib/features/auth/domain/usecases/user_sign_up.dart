@@ -12,7 +12,7 @@ class UserSignUp implements UseCase<String, UserSignUpParams> {
   Future<Either<Failure, String>> call(UserSignUpParams params) async {
     return await authRepository.signUpWithEmailPassword(
       email: params.email,
-      name: params.username,
+      name: params.name,
       password: params.password,
     );
   }
@@ -20,12 +20,12 @@ class UserSignUp implements UseCase<String, UserSignUpParams> {
 
 // class for signup params
 class UserSignUpParams {
-  final String username;
+  final String name;
   final String password;
   final String email;
 
   UserSignUpParams({
-    required this.username,
+    required this.name,
     required this.password,
     required this.email,
   });
