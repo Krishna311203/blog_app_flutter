@@ -1,26 +1,19 @@
-import 'package:blog_app_flutter/features/auth/data/dataSource/auth_remote_data_source.dart';
-import 'package:blog_app_flutter/features/auth/data/repository/auth_repository_impl.dart';
-import 'package:blog_app_flutter/features/auth/domain/usecases/user_sign_up.dart';
 import 'package:blog_app_flutter/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:blog_app_flutter/shared/secrets/app_secrets.dart';
+import 'package:blog_app_flutter/init_dependencies.dart';
 import 'package:blog_app_flutter/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
 import 'features/auth/presentation/pages/sign_in_Page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final supabase = await Supabase.initialize(
-      url: AppSecrets.supabaseUrl, anonKey: AppSecrets.supabaseKey);
+  await initDependencies();
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (_) => AuthBloc(
-                userSignUp: UserSignUp(AuthRepositoryImpl(
-                    AuthRemoteDataSourceImpl(supabase.client)))))
+          create: (_) => serviceLocator<AuthBloc>(),
+        ),
       ],
       child: const MyApp(),
     ),
